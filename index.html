@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>28Hse Redesign Concept</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css?v=20260516ae">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shortcut-map" viewBox="0 0 24 24">
+      <path d="M9 18.5 3.8 21V6.2L9 3.7l6 2.8 5.2-2.5v14.8L15 21.3l-6-2.8Z"/>
+      <path d="M9 3.7v14.8M15 6.5v14.8"/>
+      <path d="M17.4 9.1a3 3 0 0 0-4.2 4.2l2.1 2.2 2.1-2.2a3 3 0 0 0 0-4.2Z"/>
+      <path d="M15.3 11.3h.01"/>
+    </symbol>
+    <symbol id="icon-shortcut-sale" viewBox="0 0 24 24">
+      <path d="M4 11.2V5h6.2L20 14.8 14.8 20 4 9.2Z"/>
+      <path d="M7.5 8h.01M13 8.5l-4.5 4.5M15.4 10.9l-4.5 4.5"/>
+    </symbol>
+    <symbol id="icon-shortcut-rent" viewBox="0 0 24 24">
+      <path d="M8.7 14.2a5.2 5.2 0 1 1 4.2-4.2"/>
+      <path d="M13 13 21 5M17 9l2.2 2.2M14.8 11.2l1.6 1.6"/>
+      <path d="M5 20h8M7 16v4"/>
+    </symbol>
+    <symbol id="icon-shortcut-owner" viewBox="0 0 24 24">
+      <path d="M4 20V9.8L12 4l8 5.8V20"/>
+      <path d="M9 20v-6h6v6"/>
+      <path d="M7.4 11.2a4 4 0 0 0 9.2 0"/>
+    </symbol>
+    <symbol id="icon-shortcut-apartment" viewBox="0 0 24 24">
+      <path d="M5 21V4h14v17M3 21h18"/>
+      <path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2"/>
+    </symbol>
+    <symbol id="icon-shortcut-service" viewBox="0 0 24 24">
+      <path d="M4 12h16v7H4zM6 12V8a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v4"/>
+      <path d="M8 19v2M16 19v2M8 15h.01M16 15h.01"/>
+    </symbol>
+    <symbol id="icon-shortcut-new-home" viewBox="0 0 24 24">
+      <path d="M4 21V10.8L12 5l8 5.8V21"/>
+      <path d="M9 21v-6h6v6M16 5V3h4v5M7.2 11.8h9.6"/>
+      <path d="M6 4.8h3.5M7.8 3v3.6"/>
+    </symbol>
+    <symbol id="icon-shortcut-office" viewBox="0 0 24 24">
+      <path d="M4 21V5h9v16M13 9h7v12M2 21h20"/>
+      <path d="M7 9h2M7 13h2M7 17h2M16 13h1.8M16 17h1.8"/>
+    </symbol>
+    <symbol id="icon-shortcut-shop" viewBox="0 0 24 24">
+      <path d="M4 10h16l-1.1-5H5.1L4 10Z"/>
+      <path d="M5 10v10h14V10M8 20v-6h8v6"/>
+      <path d="M7 10v2.2a2 2 0 0 0 4 0V10M13 10v2.2a2 2 0 0 0 4 0V10"/>
+    </symbol>
+    <symbol id="icon-shortcut-car-park" viewBox="0 0 24 24">
+      <path d="M6 21V3h7a5 5 0 0 1 0 10H9v8"/>
+      <path d="M9 10h4a2 2 0 0 0 0-4H9v4Z"/>
+    </symbol>
+    <symbol id="icon-shortcut-land" viewBox="0 0 24 24">
+      <path d="m3 19 5.4-12 5.1 12H3ZM10.8 19l4.4-9 5.8 9H10.8Z"/>
+      <path d="M6.8 14h4.5M15.3 15.4h3.2"/>
+    </symbol>
+    <symbol id="icon-shortcut-project" viewBox="0 0 24 24">
+      <path d="M4 21V7h7v14M11 11h9v10M2 21h20"/>
+      <path d="M7 10h1M7 14h1M7 18h1M15 14h2M15 18h2M15 7V3M13 5h4"/>
+    </symbol>
+    <symbol id="icon-shortcut-premium" viewBox="0 0 24 24">
+      <path d="m12 3 2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z"/>
+      <path d="M19 3v3M17.5 4.5h3"/>
+    </symbol>
+    <symbol id="icon-shortcut-bay" viewBox="0 0 24 24">
+      <path d="M4 15c5-5 11-5 16 0"/>
+      <path d="M7 12v7M12 10v9M17 12v7"/>
+      <path d="M3 20c2.8-1.7 5.6-1.7 8.4 0 3-1.7 6-1.7 9 0"/>
+    </symbol>
+    <symbol id="icon-shortcut-globe" viewBox="0 0 24 24">
+      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/>
+      <path d="M3 12h18M12 3c2.4 2.7 3.6 5.7 3.6 9S14.4 18.3 12 21M12 3c-2.4 2.7-3.6 5.7-3.6 9s1.2 6.3 3.6 9"/>
+    </symbol>
+    <symbol id="icon-shortcut-estate" viewBox="0 0 24 24">
+      <path d="M4 20V5h16v15"/>
+      <path d="M7 17V9h3v8M13 17v-5h4v5M3 20h18"/>
+    </symbol>
+    <symbol id="icon-shortcut-valuation" viewBox="0 0 24 24">
+      <path d="M6 4h9l3 3v13H6z"/>
+      <path d="M14 4v4h4M9 11h6M9 15h3"/>
+      <path d="m15.8 16.8 3.2 3.2"/>
+    </symbol>
+    <symbol id="icon-shortcut-mortgage" viewBox="0 0 24 24">
+      <path d="M3 10 12 4l9 6M5 10v10h14V10"/>
+      <path d="M8 20v-5h8v5M7 12h10"/>
+      <path d="M10 7.5h4"/>
+    </symbol>
+    <symbol id="icon-shortcut-school" viewBox="0 0 24 24">
+      <path d="m3 8.5 9-4 9 4-9 4-9-4Z"/>
+      <path d="M7 11v4c1.5 1.2 3.2 1.8 5 1.8s3.5-.6 5-1.8v-4M19 10v5"/>
+    </symbol>
+    <symbol id="icon-shortcut-furniture" viewBox="0 0 24 24">
+      <path d="M5 12V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4"/>
+      <path d="M4 12h16v5H4zM6 17v3M18 17v3M8 10h8"/>
+    </symbol>
+    <symbol id="icon-shortcut-agency" viewBox="0 0 24 24">
+      <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+      <path d="M3.5 20c.6-4 2.4-6 5.3-6 1.8 0 3.2.8 4.2 2.4M13 20c.5-3.3 2-5 4.4-5 2.2 0 3.5 1.6 4.1 5"/>
+    </symbol>
+    <symbol id="icon-shortcut-index" viewBox="0 0 24 24">
+      <path d="M4 19V5M4 19h16"/>
+      <path d="m7 15 3.4-4 3.4 2.5L19 7"/>
+      <path d="M7 15h.01M10.4 11h.01M13.8 13.5h.01M19 7h.01"/>
+    </symbol>
+    <symbol id="icon-shortcut-news" viewBox="0 0 24 24">
+      <path d="M5 5h12a2 2 0 0 1 2 2v12H7a2 2 0 0 1-2-2V5Z"/>
+      <path d="M7 8h8M7 12h8M7 16h5M19 8h1v9a2 2 0 0 1-2 2"/>
+    </symbol>
+    <symbol id="icon-shortcut-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h13M13 6l6 6-6 6"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="utility-bar">
+      <div class="container utility-inner">
+        <span>No.1 HK Property Portal</span>
+        <div class="utility-links" aria-label="Account and language actions">
+          <button class="utility-action" type="button" data-action="language">EN / TC</button>
+          <button class="utility-action" type="button" data-modal="login">Login</button>
+          <button class="utility-action" type="button" data-modal="register">Register</button>
+          <button class="utility-action" type="button" data-modal="agent">Agent / Ads</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container nav-inner">
+      <a class="brand" href="#/home" data-route="home" aria-label="28Hse home">
+        <img class="brand-logo" src="assets/28hse-logo-new.png" alt="28Hse.com Hong Kong Property">
+      </a>
+
+      <label class="map-global-search" aria-label="Map search">
+        <input type="search" placeholder="Area, MTR, university, estate, listing ID">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4M10.8 18a7.2 7.2 0 1 1 0-14.4 7.2 7.2 0 0 1 0 14.4Z"/></svg>
+      </label>
+
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a class="active" href="#/home" data-route="home">Home</a>
+        <a href="#/map" data-route="map" data-set-mode="rent">Map</a>
+        <a href="#/listings" data-route="listings" data-set-mode="sale">Buy</a>
+        <a href="#/listings" data-route="listings" data-set-mode="rent">Rent</a>
+        <a href="#/homes" data-route="homes">New Homes</a>
+        <a href="#/market" data-route="market" data-focus-tool="estate">Estate</a>
+        <a href="#/market" data-route="market" data-modal="valuation">Valuation</a>
+        <a href="#/market" data-route="market" data-focus-tool="mortgage">Mortgage</a>
+        <a href="#/news" data-route="news">News</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-button" type="button" data-modal="saved" aria-label="Saved listings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.2l-.8-.7C5.4 14.2 2 11.1 2 7.2 2 4.1 4.4 2 7.2 2c1.6 0 3.2.8 4.1 2 1-1.2 2.5-2 4.1-2C18.2 2 21 4.1 21 7.2c0 3.9-3.4 7-9.2 12.3l-.8.7Z"/></svg>
+          <span id="saved-count" aria-hidden="true">0</span>
+        </button>
+        <button class="post-link" type="button" data-modal="list">List Property</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="search-band" aria-label="Property search">
+      <div class="container search-shell">
+        <div class="search-tabs" role="tablist" aria-label="Listing mode">
+          <button class="tab active" type="button" data-mode="sale" role="tab" aria-selected="true">Buy</button>
+          <button class="tab" type="button" data-mode="rent" role="tab" aria-selected="false">Rent</button>
+          <button class="tab" type="button" data-mode="owner" role="tab" aria-selected="false">Owner</button>
+        </div>
+
+        <form class="search-form" id="search-form">
+          <label class="search-field search-field-wide">
+            <span>Area, estate or MTR</span>
+            <input id="query-input" type="search" placeholder="Try Taikoo Shing, Kai Tak, Central...">
+          </label>
+
+          <label class="search-field">
+            <span>Property type</span>
+            <select id="type-filter">
+              <option value="any">Any type</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Service Apartment">Service Apartment</option>
+              <option value="Office">Office</option>
+              <option value="Shop">Shop</option>
+              <option value="Car Park">Car Park</option>
+              <option value="Land">Land</option>
+            </select>
+          </label>
+
+          <label class="search-field">
+            <span>Price range</span>
+            <select id="price-range"></select>
+          </label>
+
+          <button class="search-button" type="submit">Search <span id="search-mode">Buy</span></button>
+        </form>
+
+        <div class="filter-toolbar">
+          <div class="quick-filters" aria-label="Popular districts">
+            <button type="button" class="chip active" data-district="all" aria-pressed="true">All HK</button>
+            <button type="button" class="chip" data-district="Hong Kong Island" aria-pressed="false">Hong Kong Island</button>
+            <button type="button" class="chip" data-district="Kowloon" aria-pressed="false">Kowloon</button>
+            <button type="button" class="chip" data-district="New Territories East" aria-pressed="false">NT East</button>
+            <button type="button" class="chip" data-district="New Territories West" aria-pressed="false">NT West</button>
+            <button type="button" class="chip" data-district="Greater Bay Area" aria-pressed="false">Greater Bay</button>
+            <button type="button" class="chip" data-district="Japan" aria-pressed="false">Japan</button>
+          </div>
+
+          <button class="filter-toggle" type="button" id="filter-toggle" aria-expanded="false" aria-controls="filter-panel">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v2H3V5Zm4 6h10v2H7v-2Zm3 6h4v2h-4v-2Z"/></svg>
+            More filters
+            <span id="filter-count">0</span>
+          </button>
+        </div>
+
+        <div class="search-assist" aria-label="Fast search presets">
+          <span>Quick picks</span>
+          <button type="button" data-preset="near-mtr">Near MTR</button>
+          <button type="button" data-preset="verified">Verified only</button>
+          <button type="button" data-preset="starter">Starter budget</button>
+          <button type="button" data-preset="rent-under-30k">Rent under 30K</button>
+          <button type="button" data-preset="family">Family 3+ beds</button>
+          <button type="button" data-preset="service-apartment">Service apartment</button>
+          <button type="button" data-preset="office">Office space</button>
+        </div>
+
+        <div class="filter-panel" id="filter-panel" hidden>
+          <div class="filter-panel-head">
+            <div>
+              <strong>Smart filters</strong>
+              <span id="filter-summary">No extra filters selected</span>
+            </div>
+            <button type="button" class="ghost-button" id="reset-filters">Reset all</button>
+          </div>
+
+          <div class="filter-grid">
+            <fieldset class="filter-group">
+              <legend>Bedrooms</legend>
+              <div class="segment-control" id="bedroom-filter">
+                <button type="button" class="active" data-bedroom="any" aria-pressed="true">Any</button>
+                <button type="button" data-bedroom="1" aria-pressed="false">1+</button>
+                <button type="button" data-bedroom="2" aria-pressed="false">2+</button>
+                <button type="button" data-bedroom="3" aria-pressed="false">3+</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend>Saleable size</legend>
+              <div class="range-pair">
+                <label><input id="min-size" type="number" min="0" placeholder="Min sq ft" aria-label="Minimum saleable size"></label>
+                <label><input id="max-size" type="number" min="0" placeholder="Max sq ft" aria-label="Maximum saleable size"></label>
+              </div>
+            </fieldset>
+
+            <label class="filter-group">
+              <span>Sort results</span>
+              <select id="sort-filter">
+                <option value="recommended">Recommended</option>
+                <option value="price-low">Price low to high</option>
+                <option value="price-high">Price high to low</option>
+                <option value="size-high">Largest first</option>
+                <option value="newest">Newest</option>
+              </select>
+            </label>
+
+            <fieldset class="filter-group">
+              <legend>Must have</legend>
+              <label class="check-row"><input type="checkbox" id="verified-only"> Verified agent</label>
+              <label class="check-row"><input type="checkbox" id="mtr-only"> Near MTR</label>
+            </fieldset>
+          </div>
+
+          <div class="filter-actions">
+            <button class="secondary-button" type="button" id="map-preview">Map preview</button>
+            <button class="search-button" type="button" id="apply-filters">Apply filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-ad-section" aria-label="Sponsored placement">
+      <div class="container">
+        <article class="home-ad-banner">
+          <div class="home-ad-copy">
+            <p class="ad-label">Sponsored</p>
+            <h2>Featured serviced residences for flexible Hong Kong stays.</h2>
+            <p>Partner inventory with verified agents, weekly availability and move-in support.</p>
+            <div class="home-ad-actions">
+              <button class="search-button" type="button" data-modal="premium">View partner listings</button>
+              <button class="secondary-button" type="button" data-route="listings" data-preset="service-apartment">Compare serviced apartments</button>
+            </div>
+          </div>
+          <div class="home-ad-media" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200" alt="">
+            <span>Premium placement</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="quick-links" aria-label="Site shortcuts">
+      <div class="container shortcut-grid">
+        <button type="button" data-route="map" data-set-mode="rent">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-map"></use></svg></span>
+          <span class="shortcut-copy"><span>Map</span><strong>Live search</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-set-mode="sale">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-sale"></use></svg></span>
+          <span class="shortcut-copy"><span>Buy</span><strong>Latest for sale</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-set-mode="rent">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-rent"></use></svg></span>
+          <span class="shortcut-copy"><span>Rent</span><strong>Available homes</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-set-mode="owner">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-owner"></use></svg></span>
+          <span class="shortcut-copy"><span>Owner</span><strong>Direct listings</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-preset="apartment">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-apartment"></use></svg></span>
+          <span class="shortcut-copy"><span>Apartment</span><strong>Flats and homes</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-preset="service-apartment">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-service"></use></svg></span>
+          <span class="shortcut-copy"><span>Service Apt</span><strong>Short-term stays</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="homes">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-new-home"></use></svg></span>
+          <span class="shortcut-copy"><span>New Homes</span><strong>Primary market</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-preset="office">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-office"></use></svg></span>
+          <span class="shortcut-copy"><span>Office</span><strong>Commercial lease</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-preset="shop">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-shop"></use></svg></span>
+          <span class="shortcut-copy"><span>Shop</span><strong>Retail spaces</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-preset="car-park">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-car-park"></use></svg></span>
+          <span class="shortcut-copy"><span>Car Park</span><strong>Parking spaces</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="listings" data-preset="land">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-land"></use></svg></span>
+          <span class="shortcut-copy"><span>Land</span><strong>Village houses</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="homes" data-modal="projects">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-project"></use></svg></span>
+          <span class="shortcut-copy"><span>New Office</span><strong>Commercial projects</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-modal="premium">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-premium"></use></svg></span>
+          <span class="shortcut-copy"><span>Premium</span><strong>Partner listings</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="map" data-district-shortcut="Greater Bay Area">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-bay"></use></svg></span>
+          <span class="shortcut-copy"><span>Greater Bay</span><strong>Cross-border homes</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="map" data-district-shortcut="Japan">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-globe"></use></svg></span>
+          <span class="shortcut-copy"><span>Japan</span><strong>Overseas homes</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="market" data-focus-tool="estate">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-estate"></use></svg></span>
+          <span class="shortcut-copy"><span>Estate</span><strong>Price history</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="market" data-modal="valuation">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-valuation"></use></svg></span>
+          <span class="shortcut-copy"><span>Valuation</span><strong>Instant estimate</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="market" data-focus-tool="mortgage">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-mortgage"></use></svg></span>
+          <span class="shortcut-copy"><span>Mortgage</span><strong>Payment check</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-modal="school">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-school"></use></svg></span>
+          <span class="shortcut-copy"><span>School Net</span><strong>Family districts</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-modal="furniture">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-furniture"></use></svg></span>
+          <span class="shortcut-copy"><span>Furniture</span><strong>Move-in services</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-modal="agent">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-agency"></use></svg></span>
+          <span class="shortcut-copy"><span>Agency</span><strong>Ads and accounts</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="market" data-modal="index">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-index"></use></svg></span>
+          <span class="shortcut-copy"><span>Eva Index</span><strong>Market indicator</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+        <button type="button" data-route="news" data-modal="news">
+          <span class="shortcut-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-news"></use></svg></span>
+          <span class="shortcut-copy"><span>News</span><strong>Market updates</strong></span>
+          <svg class="shortcut-arrow" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-shortcut-arrow"></use></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="map-page" id="map-page" aria-label="Map search" hidden>
+      <div class="map-filter-strip" aria-label="Map filters">
+        <button class="active" type="button" data-set-mode="rent" data-route="map">Rent, Lease <span aria-hidden="true">⌄</span></button>
+        <button type="button" data-clear-filter="type">Room size <span aria-hidden="true">⌄</span></button>
+        <button type="button" data-toast="Move-in date filter opened">Move-in <span aria-hidden="true">⌄</span></button>
+        <button type="button" data-toast="Floor filter opened">Floor <span aria-hidden="true">⌄</span></button>
+        <button type="button" data-toast="More filters opened">More filters <span aria-hidden="true">⌄</span></button>
+        <button class="map-refresh" type="button" data-toast="Map results refreshed" aria-label="Refresh map">↻</button>
+      </div>
+      <div class="map-app-shell">
+        <aside class="map-rail" aria-label="Map categories">
+          <button class="active" type="button" data-route="map" data-set-mode="rent" aria-label="Rent listings">
+            <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M16 16h32v32H16zM24 16v16H16M38 16v15h10M16 39h18v9M42 37h6"></path></svg></span><strong>Rooms</strong>
+          </button>
+          <button type="button" data-route="map" data-set-mode="sale" aria-label="Sale listings">
+            <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M17 54V18h30v36M25 26h4M35 26h4M25 36h4M35 36h4M25 46h4M35 46h4M13 54h38"></path></svg></span><strong>Apartments</strong>
+          </button>
+          <button type="button" data-route="map" data-preset="apartment" aria-label="Apartment listings">
+            <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M13 31 32 16l19 15M18 29v24h28V29M25 53V39h14v14M22 23v-7h8"></path></svg></span><strong>Houses</strong>
+          </button>
+          <button type="button" data-route="map" data-preset="office" aria-label="Office listings">
+            <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M17 54V16h30v38M25 25h4M35 25h4M25 34h4M35 34h4M25 43h4M35 43h4M13 54h38"></path></svg></span><strong>Offices</strong>
+          </button>
+          <button type="button" data-route="map" data-preset="shop" aria-label="Retail listings">
+            <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M27 12h10l7 35H20zM18 47h28M15 54h34M23 24h18M20 36h24"></path></svg></span><strong>New</strong>
+          </button>
+          <button type="button" data-route="map" data-preset="service-apartment" aria-label="Serviced apartment listings">
+            <span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="25" cy="22" r="7"></circle><circle cx="41" cy="22" r="7"></circle><path d="M14 50c1-11 8-17 16-17s15 6 16 17M33 50c1-7 5-12 12-13"></path></svg></span><strong>Area</strong>
+          </button>
+        </aside>
+
+        <aside class="map-drawer">
+          <div class="map-list" id="map-page-list" aria-live="polite"></div>
+        </aside>
+
+        <section class="map-stage" aria-label="Interactive map">
+          <div class="map-stage-toolbar">
+            <div>
+              <strong id="map-stage-summary">All districts</strong>
+              <span>OpenStreetMap tiles with district clusters and demo property data</span>
+            </div>
+            <button class="secondary-button" type="button" data-route="listings">List view</button>
+          </div>
+          <div class="real-map" id="real-map"></div>
+          <aside class="map-inspector" id="map-inspector" hidden aria-live="polite"></aside>
+          <div class="map-hover-card" id="map-hover-card" hidden></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section-block listings-section" id="listings" aria-labelledby="listings-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" id="listings-kicker">Buy</p>
+            <h2 id="listings-title">Matching properties</h2>
+            <p class="section-subtitle" id="results-summary">Showing the best available homes.</p>
+          </div>
+          <div class="results-actions">
+            <button class="view-button active" type="button" data-view="grid" aria-pressed="true">Grid</button>
+            <button class="view-button" type="button" data-view="list" aria-pressed="false">List</button>
+          </div>
+        </div>
+
+        <div class="active-filters" id="active-filters" aria-live="polite"></div>
+
+        <div class="results-workspace">
+          <aside class="map-panel" aria-label="Map based property preview">
+            <div class="map-head">
+              <div>
+                <span>Map preview</span>
+                <strong id="map-summary">Hong Kong listings</strong>
+              </div>
+              <button class="secondary-button" type="button" id="map-preview-inline">Open map</button>
+            </div>
+            <div class="map-canvas" id="map-canvas"></div>
+            <p class="map-note">Tap a district marker to filter the list.</p>
+          </aside>
+
+          <div class="results-column">
+            <div class="listing-grid" id="results-grid" aria-live="polite"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <strong>No exact match yet.</strong>
+              <p>Try fewer filters or reset the district and size fields.</p>
+              <button class="secondary-button" type="button" id="empty-reset">Reset filters</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="market-band" id="market" aria-labelledby="market-title">
+      <div class="container market-layout">
+        <div>
+          <p class="eyebrow">Market tools</p>
+          <h2 id="market-title">Indexes, estate prices and mortgage check stay visible.</h2>
+          <p class="support-text">28Hse is still a utility-heavy property portal. The redesign makes the tools easier to scan and quicker to act on.</p>
+        </div>
+
+        <div class="index-panel tool-card" id="index-tool">
+          <button type="button" data-modal="index">
+            <span>Eva Property Index</span>
+            <strong>117.91</strong>
+            <small>-0.45%</small>
+          </button>
+          <button type="button" data-modal="index">
+            <span>Eva Rental Index</span>
+            <strong>118.47</strong>
+            <small class="positive">+0.29%</small>
+          </button>
+        </div>
+
+        <form class="mortgage-panel tool-card" id="mortgage-tool">
+          <h3>Mortgage Cal</h3>
+          <label>
+            Property Value
+            <input id="property-value" type="number" value="600" min="1">
+            <span>10K HKD</span>
+          </label>
+          <label>
+            Loan Ratio
+            <input id="loan-ratio" type="number" value="70" min="1" max="95">
+            <span>%</span>
+          </label>
+          <label>
+            Loan Years
+            <input id="loan-years" type="number" value="25" min="1" max="40">
+            <span>Year</span>
+          </label>
+          <label>
+            Interest
+            <input id="interest-rate" type="number" value="3.5" min="0" step="0.1">
+            <span>%</span>
+          </label>
+          <button type="submit">Calculate</button>
+          <output id="mortgage-output">Monthly estimate: HKD$21,030</output>
+        </form>
+
+        <div class="estate-panel tool-card" id="estate-tool">
+          <h3>Estate Price</h3>
+          <div class="estate-tabs" aria-label="District price tabs">
+            <button class="active" type="button" data-estate-area="HK" aria-pressed="true">HK</button>
+            <button type="button" data-estate-area="KLN" aria-pressed="false">KLN</button>
+            <button type="button" data-estate-area="NTE" aria-pressed="false">NT_E</button>
+            <button type="button" data-estate-area="NTW" aria-pressed="false">NT_W</button>
+          </div>
+          <ul id="estate-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block news-section" id="news" aria-labelledby="news-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">News</p>
+            <h2 id="news-title">Property market updates</h2>
+          </div>
+          <button class="section-link" type="button" data-modal="news">More news</button>
+        </div>
+        <div class="news-grid">
+          <button type="button" data-news="Property Index">
+            <span>#Property Index</span>
+            <h3>Focused new projects siphon secondary demand</h3>
+            <p>Market sentiment turns cautious around the holiday period.</p>
+          </button>
+          <button type="button" data-news="New Properties">
+            <span>#New Properties</span>
+            <h3>96% of units sold in first round</h3>
+            <p>Primary market activity remains closely watched by buyers.</p>
+          </button>
+          <button type="button" data-news="Transaction">
+            <span>#Transaction</span>
+            <h3>Hong Kong property market update</h3>
+            <p>Weekend transaction volume rebounds across selected projects.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block homes-section" id="homes" aria-labelledby="homes-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">New Homes</p>
+            <h2 id="homes-title">Primary projects stay scannable</h2>
+          </div>
+          <button class="section-link" type="button" data-modal="projects">Explore projects</button>
+        </div>
+        <div class="project-table" role="table" aria-label="New homes">
+          <div role="row">
+            <span role="columnheader">Project</span>
+            <span role="columnheader">Location</span>
+            <span role="columnheader">Developer</span>
+            <span role="columnheader">Unit price</span>
+          </div>
+          <button type="button" role="row" data-project="Phase 2 of Highwood">
+            <strong role="cell">Phase 2 of Highwood</strong>
+            <span role="cell">To Kwa Wan</span>
+            <span role="cell">Henderson</span>
+            <span role="cell">18,993 - 25,856</span>
+          </button>
+          <button type="button" role="row" data-project="Lime Spark">
+            <strong role="cell">Lime Spark</strong>
+            <span role="cell">Tsuen Wan</span>
+            <span role="cell">SHKP</span>
+            <span role="cell">16,148 - 19,125</span>
+          </button>
+          <button type="button" role="row" data-project="Porto">
+            <strong role="cell">Porto</strong>
+            <span role="cell">Ap Lei Chau</span>
+            <span role="cell">Wang On</span>
+            <span role="cell">21,141 - 26,570</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand footer-brand" href="#/home" data-route="home" aria-label="28Hse home">
+          <img class="brand-logo" src="assets/28hse-logo-new.png" alt="28Hse.com Hong Kong Property">
+        </a>
+        <p>Buy, rent, value and monitor the Hong Kong property market.</p>
+      </div>
+      <div class="footer-links">
+        <button type="button" data-set-mode="sale" data-scroll="#listings">Buy</button>
+        <button type="button" data-set-mode="rent" data-scroll="#listings">Rent</button>
+        <button type="button" data-modal="contact">Contact Us</button>
+        <button type="button" data-modal="about">About Us</button>
+        <button type="button" data-modal="terms">Terms</button>
+        <button type="button" data-modal="privacy">Privacy</button>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="chatbot" id="property-assistant" aria-live="polite">
+    <section class="chatbot-panel" id="chatbot-panel" aria-label="28Hse assistant" hidden>
+      <header class="chatbot-head">
+        <span class="chatbot-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 11.5C5 7.9 8.1 5 12 5s7 2.9 7 6.5S15.9 18 12 18c-.9 0-1.8-.2-2.6-.5L5.5 19l1.2-3A6.2 6.2 0 0 1 5 11.5Z"></path><path d="M9 11h.01M12 11h.01M15 11h.01"></path></svg>
+        </span>
+        <div>
+          <strong>28Hse Assistant</strong>
+          <small>Search, compare and enquire faster</small>
+        </div>
+        <button class="chatbot-close" type="button" data-chat-close aria-label="Close assistant">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        </button>
+      </header>
+
+      <div class="chatbot-messages" id="chatbot-messages">
+        <article class="chat-message bot">
+          <span class="message-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 11.5C4 7.4 7.6 4 12 4s8 3.4 8 7.5S16.4 19 12 19c-1 0-2-.2-2.9-.5L4.5 20l1.3-3.4A7 7 0 0 1 4 11.5Z"></path><path d="M9 11h.01M12 11h.01M15 11h.01"></path></svg>
+          </span>
+          <div>
+            <p>Hi, I can help you find Hong Kong homes, explain listing costs, shortlist areas, or prepare an agent enquiry.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="chatbot-prompts" aria-label="Suggested assistant prompts">
+        <button type="button" data-chat-prompt="Find apartments near MTR under HKD $30K rent">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v12H5zM8 16l-2 4M16 16l2 4M8 8h8M8 12h8"></path></svg>
+          <span>Near MTR</span>
+        </button>
+        <button type="button" data-chat-prompt="Estimate mortgage for a HKD $8M home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 12 4l8 6v10H4z"></path><path d="M8 20v-6h8v6M9 10h6"></path></svg>
+          <span>Mortgage</span>
+        </button>
+        <button type="button" data-chat-prompt="Show verified listings in Quarry Bay">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"></path><path d="M9.5 9.8 11.4 12l3.6-4"></path></svg>
+          <span>Verified</span>
+        </button>
+      </div>
+
+      <form class="chatbot-form" id="chatbot-form">
+        <label>
+          <span>Ask the assistant</span>
+          <input id="chatbot-input" type="text" autocomplete="off" placeholder="Ask about areas, prices or listings">
+        </label>
+        <button type="submit" data-chat-send aria-label="Send message">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 16-8-5 16-3-6-8-2Z"></path><path d="m12 14 8-10"></path></svg>
+        </button>
+      </form>
+    </section>
+
+    <button class="chatbot-launcher" type="button" data-chat-toggle aria-expanded="false" aria-controls="chatbot-panel" aria-label="Open 28Hse assistant">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11.5C5 7.9 8.1 5 12 5s7 2.9 7 6.5S15.9 18 12 18c-.9 0-1.8-.2-2.6-.5L5.5 19l1.2-3A6.2 6.2 0 0 1 5 11.5Z"></path><path d="M9 11h.01M12 11h.01M15 11h.01"></path></svg>
+      <span>Ask</span>
+      <i aria-hidden="true"></i>
+    </button>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <div class="modal" id="app-modal" hidden>
+    <button class="modal-backdrop" type="button" data-close-modal aria-label="Close dialog"></button>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <div class="modal-head">
+        <h2 id="modal-title">Dialog</h2>
+        <button class="icon-button" type="button" data-close-modal aria-label="Close dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5Z"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js?v=20260516ae"></script>
+</body>
+</html>
