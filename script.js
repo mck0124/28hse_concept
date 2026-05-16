@@ -459,44 +459,44 @@ const mapAreas = [
 ];
 
 const areaBoundaryPolygons = {
-  "Central": [[22.2860, 114.1494], [22.2866, 114.1624], [22.2824, 114.1668], [22.2760, 114.1638], [22.2753, 114.1534], [22.2801, 114.1482]],
-  "Admiralty": [[22.2827, 114.1608], [22.2830, 114.1706], [22.2789, 114.1732], [22.2746, 114.1694], [22.2765, 114.1628]],
-  "Wan Chai": [[22.2838, 114.1694], [22.2842, 114.1808], [22.2798, 114.1842], [22.2740, 114.1803], [22.2729, 114.1725], [22.2774, 114.1685]],
-  "Causeway Bay": [[22.2861, 114.1782], [22.2860, 114.1898], [22.2828, 114.1945], [22.2763, 114.1930], [22.2739, 114.1850], [22.2774, 114.1774]],
-  "Tin Hau": [[22.2895, 114.1874], [22.2904, 114.1958], [22.2854, 114.1998], [22.2817, 114.1930], [22.2826, 114.1875]],
-  "North Point": [[22.2960, 114.1920], [22.2962, 114.2062], [22.2914, 114.2122], [22.2862, 114.2070], [22.2879, 114.1961], [22.2916, 114.1914]],
-  "Quarry Bay": [[22.2915, 114.2076], [22.2910, 114.2182], [22.2850, 114.2222], [22.2818, 114.2152], [22.2857, 114.2070]],
-  "Taikoo Shing": [[22.2895, 114.2148], [22.2898, 114.2244], [22.2844, 114.2265], [22.2818, 114.2192], [22.2847, 114.2132]],
-  "Kennedy Town": [[22.2860, 114.1222], [22.2874, 114.1320], [22.2818, 114.1361], [22.2767, 114.1318], [22.2780, 114.1236]],
-  "Sai Ying Pun": [[22.2896, 114.1374], [22.2894, 114.1484], [22.2837, 114.1512], [22.2792, 114.1465], [22.2812, 114.1376]],
-  "Aberdeen": [[22.2552, 114.1452], [22.2555, 114.1608], [22.2474, 114.1670], [22.2398, 114.1594], [22.2418, 114.1468]],
-  "Mid-Levels": [[22.2858, 114.1416], [22.2872, 114.1584], [22.2806, 114.1652], [22.2724, 114.1580], [22.2745, 114.1432]],
-  "Tsim Sha Tsui": [[22.3042, 114.1650], [22.3040, 114.1810], [22.2973, 114.1834], [22.2920, 114.1747], [22.2948, 114.1648]],
-  "Jordan": [[22.3099, 114.1648], [22.3105, 114.1774], [22.3042, 114.1800], [22.3005, 114.1710], [22.3043, 114.1640]],
-  "Mong Kok": [[22.3258, 114.1624], [22.3266, 114.1743], [22.3182, 114.1776], [22.3128, 114.1692], [22.3185, 114.1608]],
-  "Prince Edward": [[22.3301, 114.1620], [22.3304, 114.1736], [22.3236, 114.1761], [22.3192, 114.1683], [22.3234, 114.1610]],
-  "Mei Foo": [[22.3419, 114.1330], [22.3434, 114.1462], [22.3369, 114.1500], [22.3309, 114.1425], [22.3341, 114.1327]],
-  "Hung Hom": [[22.3136, 114.1810], [22.3131, 114.1946], [22.3051, 114.1976], [22.2994, 114.1890], [22.3041, 114.1795]],
-  "Kowloon City": [[22.3348, 114.1810], [22.3346, 114.1972], [22.3266, 114.2007], [22.3214, 114.1904], [22.3266, 114.1794]],
-  "Kai Tak": [[22.3307, 114.1940], [22.3318, 114.2108], [22.3208, 114.2154], [22.3141, 114.2047], [22.3206, 114.1940]],
-  "Kowloon Bay": [[22.3310, 114.2076], [22.3315, 114.2214], [22.3218, 114.2258], [22.3155, 114.2166], [22.3210, 114.2074]],
-  "Kwun Tong": [[22.3192, 114.2187], [22.3186, 114.2362], [22.3092, 114.2408], [22.3033, 114.2291], [22.3105, 114.2180]],
-  "Sha Tin": [[22.3926, 114.1798], [22.3912, 114.2000], [22.3787, 114.2074], [22.3696, 114.1906], [22.3765, 114.1768]],
-  "Tai Wai": [[22.3814, 114.1692], [22.3821, 114.1844], [22.3728, 114.1880], [22.3654, 114.1774], [22.3708, 114.1670]],
-  "Fo Tan": [[22.4036, 114.1905], [22.4054, 114.2072], [22.3952, 114.2123], [22.3877, 114.1990], [22.3932, 114.1888]],
-  "Tai Po": [[22.4606, 114.1582], [22.4620, 114.1800], [22.4470, 114.1885], [22.4368, 114.1680], [22.4462, 114.1532]],
-  "Ma On Shan": [[22.4358, 114.2194], [22.4354, 114.2440], [22.4213, 114.2496], [22.4116, 114.2298], [22.4212, 114.2152]],
-  "Tseung Kwan O": [[22.3227, 114.2512], [22.3210, 114.2738], [22.3030, 114.2802], [22.2920, 114.2585], [22.3053, 114.2468]],
-  "Sai Kung": [[22.3958, 114.2580], [22.3964, 114.2906], [22.3753, 114.3012], [22.3612, 114.2732], [22.3750, 114.2495]],
-  "Tsuen Wan": [[22.3810, 114.1026], [22.3838, 114.1245], [22.3692, 114.1320], [22.3598, 114.1136], [22.3684, 114.1005]],
-  "Yuen Long": [[22.4568, 114.0082], [22.4581, 114.0358], [22.4414, 114.0452], [22.4308, 114.0204], [22.4431, 114.0018]],
-  "Tin Shui Wai": [[22.4678, 113.9898], [22.4690, 114.0146], [22.4542, 114.0255], [22.4412, 114.0048], [22.4518, 113.9876]],
-  "Tung Chung": [[22.2994, 113.9305], [22.3000, 113.9576], [22.2833, 113.9666], [22.2738, 113.9443], [22.2838, 113.9268]],
-  "Tuen Mun": [[22.4048, 113.9622], [22.4070, 113.9914], [22.3890, 114.0008], [22.3758, 113.9762], [22.3880, 113.9568]],
-  "Discovery Bay": [[22.3072, 114.0084], [22.3054, 114.0270], [22.2920, 114.0318], [22.2842, 114.0141], [22.2942, 113.9990]],
-  "Shenzhen": [[22.5580, 114.0340], [22.5585, 114.0810], [22.5320, 114.0910], [22.5190, 114.0520], [22.5360, 114.0260]],
-  "Qianhai": [[22.5486, 113.8780], [22.5510, 113.9210], [22.5290, 113.9318], [22.5160, 113.8950], [22.5324, 113.8705]],
-  "Zhuhai": [[22.2870, 113.5525], [22.2885, 113.6040], [22.2580, 113.6120], [22.2430, 113.5720], [22.2638, 113.5410]]
+  "Central": [[22.2864, 114.1490], [22.2860, 114.1606], [22.2822, 114.1626], [22.2780, 114.1608], [22.2763, 114.1540], [22.2802, 114.1485]],
+  "Admiralty": [[22.2822, 114.1626], [22.2833, 114.1708], [22.2796, 114.1724], [22.2749, 114.1686], [22.2763, 114.1620], [22.2780, 114.1608]],
+  "Wan Chai": [[22.2829, 114.1708], [22.2824, 114.1818], [22.2788, 114.1833], [22.2744, 114.1805], [22.2742, 114.1730], [22.2796, 114.1724]],
+  "Causeway Bay": [[22.2836, 114.1817], [22.2842, 114.1908], [22.2803, 114.1942], [22.2756, 114.1905], [22.2744, 114.1805], [22.2788, 114.1833]],
+  "Tin Hau": [[22.2888, 114.1885], [22.2892, 114.1972], [22.2848, 114.2012], [22.2803, 114.1942], [22.2842, 114.1908]],
+  "North Point": [[22.2960, 114.1952], [22.2958, 114.2094], [22.2907, 114.2133], [22.2848, 114.2078], [22.2848, 114.2012], [22.2892, 114.1972]],
+  "Quarry Bay": [[22.2907, 114.2133], [22.2896, 114.2213], [22.2850, 114.2245], [22.2817, 114.2179], [22.2848, 114.2078]],
+  "Taikoo Shing": [[22.2890, 114.2192], [22.2887, 114.2266], [22.2839, 114.2280], [22.2817, 114.2221], [22.2850, 114.2179]],
+  "Kennedy Town": [[22.2861, 114.1223], [22.2873, 114.1322], [22.2817, 114.1357], [22.2768, 114.1314], [22.2782, 114.1238]],
+  "Sai Ying Pun": [[22.2891, 114.1372], [22.2884, 114.1488], [22.2830, 114.1510], [22.2790, 114.1464], [22.2816, 114.1375]],
+  "Aberdeen": [[22.2546, 114.1458], [22.2547, 114.1602], [22.2473, 114.1662], [22.2404, 114.1588], [22.2422, 114.1470]],
+  "Mid-Levels": [[22.2852, 114.1405], [22.2863, 114.1580], [22.2800, 114.1645], [22.2718, 114.1578], [22.2743, 114.1424]],
+  "Tsim Sha Tsui": [[22.3040, 114.1650], [22.3038, 114.1803], [22.2972, 114.1824], [22.2922, 114.1750], [22.2947, 114.1651]],
+  "Jordan": [[22.3103, 114.1647], [22.3104, 114.1776], [22.3038, 114.1803], [22.3039, 114.1650]],
+  "Mong Kok": [[22.3256, 114.1626], [22.3260, 114.1740], [22.3180, 114.1766], [22.3128, 114.1688], [22.3184, 114.1610]],
+  "Prince Edward": [[22.3303, 114.1620], [22.3303, 114.1734], [22.3242, 114.1756], [22.3256, 114.1626]],
+  "Mei Foo": [[22.3417, 114.1330], [22.3428, 114.1456], [22.3370, 114.1490], [22.3318, 114.1422], [22.3342, 114.1332]],
+  "Hung Hom": [[22.3132, 114.1812], [22.3128, 114.1938], [22.3052, 114.1962], [22.3001, 114.1885], [22.3044, 114.1802]],
+  "Kowloon City": [[22.3344, 114.1812], [22.3341, 114.1963], [22.3267, 114.1992], [22.3218, 114.1902], [22.3268, 114.1800]],
+  "Kai Tak": [[22.3297, 114.1950], [22.3308, 114.2098], [22.3210, 114.2140], [22.3150, 114.2040], [22.3218, 114.1948]],
+  "Kowloon Bay": [[22.3305, 114.2088], [22.3308, 114.2205], [22.3222, 114.2245], [22.3160, 114.2160], [22.3210, 114.2082]],
+  "Kwun Tong": [[22.3185, 114.2192], [22.3180, 114.2350], [22.3092, 114.2398], [22.3038, 114.2288], [22.3107, 114.2186]],
+  "Sha Tin": [[22.3920, 114.1800], [22.3908, 114.1995], [22.3790, 114.2064], [22.3701, 114.1903], [22.3767, 114.1775]],
+  "Tai Wai": [[22.3810, 114.1694], [22.3818, 114.1837], [22.3730, 114.1873], [22.3660, 114.1776], [22.3710, 114.1675]],
+  "Fo Tan": [[22.4030, 114.1910], [22.4045, 114.2060], [22.3950, 114.2110], [22.3882, 114.1990], [22.3932, 114.1894]],
+  "Tai Po": [[22.4600, 114.1590], [22.4613, 114.1790], [22.4472, 114.1870], [22.4373, 114.1680], [22.4465, 114.1538]],
+  "Ma On Shan": [[22.4348, 114.2197], [22.4348, 114.2425], [22.4215, 114.2480], [22.4122, 114.2300], [22.4215, 114.2160]],
+  "Tseung Kwan O": [[22.3218, 114.2515], [22.3204, 114.2726], [22.3035, 114.2784], [22.2930, 114.2586], [22.3058, 114.2475]],
+  "Sai Kung": [[22.3945, 114.2587], [22.3952, 114.2888], [22.3757, 114.2987], [22.3624, 114.2735], [22.3752, 114.2504]],
+  "Tsuen Wan": [[22.3802, 114.1030], [22.3825, 114.1235], [22.3694, 114.1308], [22.3605, 114.1138], [22.3685, 114.1012]],
+  "Yuen Long": [[22.4560, 114.0088], [22.4570, 114.0348], [22.4418, 114.0438], [22.4314, 114.0208], [22.4432, 114.0025]],
+  "Tin Shui Wai": [[22.4668, 113.9903], [22.4678, 114.0138], [22.4545, 114.0242], [22.4420, 114.0050], [22.4520, 113.9883]],
+  "Tung Chung": [[22.2985, 113.9314], [22.2988, 113.9562], [22.2836, 113.9648], [22.2748, 113.9446], [22.2840, 113.9278]],
+  "Tuen Mun": [[22.4038, 113.9630], [22.4058, 113.9902], [22.3895, 113.9995], [22.3768, 113.9764], [22.3882, 113.9578]],
+  "Discovery Bay": [[22.3060, 114.0088], [22.3045, 114.0255], [22.2925, 114.0308], [22.2850, 114.0144], [22.2946, 113.9998]],
+  "Shenzhen": [[22.5572, 114.0355], [22.5574, 114.0785], [22.5328, 114.0887], [22.5200, 114.0520], [22.5364, 114.0278]],
+  "Qianhai": [[22.5476, 113.8790], [22.5497, 113.9192], [22.5294, 113.9300], [22.5170, 113.8955], [22.5327, 113.8720]],
+  "Zhuhai": [[22.2860, 113.5542], [22.2872, 113.6018], [22.2588, 113.6090], [22.2440, 113.5730], [22.2640, 113.5430]]
 };
 
 const generatedTitles = [
@@ -1620,15 +1620,15 @@ function aggregateRegionClusters(clusters, regions, level) {
 }
 
 function mapClustersForZoom(clusters, zoom = 11) {
-  if (zoom <= 8.9) {
+  if (zoom <= 9.4) {
     return aggregateRegionClusters(clusters, macroMapRegions, "macro");
   }
 
-  if (zoom <= 10.7) {
+  if (zoom <= 11.55) {
     return aggregateRegionClusters(clusters, districtMapRegions, "district");
   }
 
-  if (zoom <= 12.2) {
+  if (zoom <= 13.15) {
     return clusters.map((cluster) => ({ ...cluster, level: "area" }));
   }
 
@@ -1636,14 +1636,8 @@ function mapClustersForZoom(clusters, zoom = 11) {
 }
 
 function boundaryClustersForZoom(clusters, zoom = 11) {
-  if (zoom <= 8.9) {
-    return aggregateRegionClusters(clusters, macroMapRegions, "macro")
-      .filter((cluster) => areaPolygonPoints(cluster));
-  }
-
-  if (zoom <= 10.7) {
-    return aggregateRegionClusters(clusters, districtMapRegions, "district")
-      .filter((cluster) => areaPolygonPoints(cluster));
+  if (zoom <= 11.55) {
+    return [];
   }
 
   return clusters
@@ -1701,33 +1695,41 @@ function mapListTemplate(property) {
   `;
 }
 
-function areaPolygonPoints(cluster) {
-  if (cluster.level === "macro") {
-    if (cluster.area === "Hong Kong") return [[22.468, 113.898], [22.470, 114.332], [22.232, 114.332], [22.214, 113.888]];
-    if (cluster.area === "Greater Bay") return [[22.575, 113.845], [22.575, 114.105], [22.250, 114.105], [22.248, 113.550], [22.380, 113.550]];
-  }
+function clusterBoundaryPolygons(cluster) {
+  const districtNames = cluster.districts || [cluster.district];
+  return mapAreas
+    .filter((area) => districtNames.includes(area.district) && areaBoundaryPolygons[area.area])
+    .map((area) => areaBoundaryPolygons[area.area]);
+}
 
-  if (cluster.level === "district") {
-    if (cluster.district === "Hong Kong Island") return [[22.303, 114.118], [22.304, 114.232], [22.246, 114.236], [22.226, 114.154], [22.264, 114.113]];
-    if (cluster.district === "Kowloon") return [[22.344, 114.126], [22.345, 114.232], [22.294, 114.238], [22.287, 114.164], [22.319, 114.126]];
-    if (cluster.district === "New Territories East") return [[22.472, 114.132], [22.462, 114.312], [22.298, 114.312], [22.302, 114.214], [22.366, 114.142]];
-    if (cluster.district === "New Territories West") return [[22.476, 113.900], [22.475, 114.144], [22.282, 114.134], [22.268, 113.912]];
-    if (cluster.district === "Greater Bay Area") return [[22.568, 113.860], [22.568, 114.092], [22.255, 114.092], [22.250, 113.554], [22.372, 113.554]];
-  }
-
-  const exactPolygon = areaPolygonForName(cluster.area) || areaPolygonForName(cluster.sourceArea);
-  if (exactPolygon) return exactPolygon;
+function fallbackClusterPolygon(cluster) {
   const seed = seedFromId(cluster.key);
-  const latRadius = 0.004 + Math.min(cluster.count, 16) * 0.00018;
-  const lngRadius = 0.006 + Math.min(cluster.count, 16) * 0.00022;
+  const latRadius = 0.0028 + Math.min(cluster.count, 16) * 0.00012;
+  const lngRadius = 0.0044 + Math.min(cluster.count, 16) * 0.00016;
   return Array.from({ length: 7 }, (_, index) => {
     const angle = (Math.PI * 2 * index) / 7;
-    const wobble = 0.78 + (((seed + index * 13) % 9) / 24);
+    const wobble = 0.78 + (((seed + index * 13) % 9) / 28);
     return [
       cluster.lat + Math.sin(angle) * latRadius * wobble,
       cluster.lng + Math.cos(angle) * lngRadius * wobble
     ];
   });
+}
+
+function areaPolygonPoints(cluster) {
+  if (cluster.level === "macro") {
+    const polygons = clusterBoundaryPolygons(cluster);
+    if (polygons.length) return polygons;
+  }
+
+  if (cluster.level === "district") {
+    const polygons = clusterBoundaryPolygons(cluster);
+    if (polygons.length) return polygons;
+  }
+
+  const exactPolygon = areaPolygonForName(cluster.area) || areaPolygonForName(cluster.sourceArea);
+  if (exactPolygon) return exactPolygon;
+  return fallbackClusterPolygon(cluster);
 }
 
 function drawClusterHighlight(cluster) {
@@ -1736,7 +1738,7 @@ function drawClusterHighlight(cluster) {
     leafletHighlight.remove();
     leafletHighlight = null;
   }
-  if (cluster.level === "macro") return;
+  if (cluster.level === "macro" || cluster.level === "district") return;
   leafletHighlight = L.polygon(areaPolygonPoints(cluster), {
     color: "#16a34a",
     weight: 3,
@@ -2224,7 +2226,7 @@ function selectMapCluster(cluster) {
   syncFormControls();
   renderListings();
   if (leafletMap) {
-    const nextZoom = cluster.level === "macro" ? 10.8 : cluster.level === "district" ? 12 : 14;
+    const nextZoom = cluster.level === "macro" ? 10.6 : cluster.level === "district" ? 12.4 : 14;
     leafletMap.flyTo([cluster.lat, cluster.lng], nextZoom, { duration: 0.55 });
   }
   const firstProperty = getFilteredProperties()[0] || cluster.items[0];
@@ -2264,13 +2266,44 @@ function renderLeafletBoundaries() {
   });
 }
 
+function markerSpacingForCluster(cluster, zoom) {
+  if (cluster.level === "macro") return 110;
+  if (cluster.level === "district") return 96;
+  if (cluster.level === "area") return zoom < 12.6 ? 82 : 64;
+  return zoom < 14 ? 48 : 34;
+}
+
+function markerPriority(cluster) {
+  const levelRank = { macro: 4, district: 3, area: 2, neighborhood: 1 };
+  return (levelRank[cluster.level] || 1) * 1000 + cluster.count;
+}
+
+function readableMarkerClusters(clusters, zoom) {
+  if (!leafletMap || zoom >= 14.2) return clusters;
+  const sorted = clusters
+    .map((cluster, order) => ({ cluster, order }))
+    .sort((a, b) => markerPriority(b.cluster) - markerPriority(a.cluster) || a.order - b.order);
+  const kept = [];
+  sorted.forEach(({ cluster, order }) => {
+    const point = leafletMap.latLngToLayerPoint([cluster.lat, cluster.lng]);
+    const spacing = markerSpacingForCluster(cluster, zoom);
+    const hasCollision = kept.some((entry) => point.distanceTo(entry.point) < Math.max(spacing, entry.spacing * 0.78));
+    if (!hasCollision || cluster.level === "macro" || cluster.level === "district") {
+      kept.push({ cluster, order, point, spacing });
+    }
+  });
+  return kept.sort((a, b) => a.order - b.order).map((entry) => entry.cluster);
+}
+
 function renderLeafletMarkers() {
   if (!leafletMap || !leafletMarkers) return;
   clearClusterHover();
   leafletMarkers.clearLayers();
-  const markerClusters = mapClustersForZoom(currentBaseMapClusters, leafletMap.getZoom());
+  const zoom = leafletMap.getZoom();
+  const markerClusters = readableMarkerClusters(mapClustersForZoom(currentBaseMapClusters, zoom), zoom);
   markerClusters.forEach((cluster) => {
-    const markerWidth = Math.max(108, Math.min(cluster.level === "neighborhood" ? 150 : 190, 76 + cluster.area.length * 9));
+    const markerMaxWidth = cluster.level === "macro" ? 142 : cluster.level === "district" ? 156 : cluster.level === "neighborhood" ? 150 : 174;
+    const markerWidth = Math.max(88, Math.min(markerMaxWidth, 68 + cluster.area.length * 7.5));
     const icon = L.divIcon({
       className: `leaflet-cluster-marker marker-level-${cluster.level || "area"}`,
       html: `<strong>${cluster.count}</strong><span>${escapeHTML(cluster.area)}</span>`,
